@@ -1,5 +1,5 @@
 # 💡 Problem Solving
-**1 day 1 commit 1 problem**<br/>
+**1 Day 1 Commit 1 Problem**<br/>
 알고리즘 문제를 풀어가며 컴퓨터 사고 능력 기르기
 
 <br/>
