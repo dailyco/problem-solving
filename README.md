@@ -14,11 +14,12 @@
 
 <br/>
 
-## PR 내용
-- Layout
-- Label
-- Merge
-
+## PR 양식
+1. Issue 생성
+2. 문제 해결 (Convention)
+3. PR 생성
+4. 코드 리뷰
+5. Merge
 <br/>
 
 ## 알고리즘 문제해결 규칙
