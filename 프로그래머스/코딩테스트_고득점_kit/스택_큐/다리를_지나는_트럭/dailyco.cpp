@@ -13,25 +13,25 @@ using namespace std;
 
 int solution(int bridge_length, int weight, vector<int> truck_weights)
 {
-    list<int> lst(bridge_length, 0);
+    list<int> trucks_on_bridge(bridge_length, 0);
     int total_weight = 0;
     int answer = 0;
 
-    while (lst.size())
+    while (trucks_on_bridge.size())
     {
-        total_weight -= lst.front();
-        lst.pop_front();
+        total_weight -= trucks_on_bridge.front();
+        trucks_on_bridge.pop_front();
         answer++;
 
         if (truck_weights.size())
         {
             if (truck_weights[0] + total_weight > weight)
             {
-                lst.push_back(0);
+                trucks_on_bridge.push_back(0);
             }
             else
             {
-                lst.push_back(truck_weights[0]);
+                trucks_on_bridge.push_back(truck_weights[0]);
                 total_weight += truck_weights[0];
                 truck_weights.erase(truck_weights.begin());
             }
