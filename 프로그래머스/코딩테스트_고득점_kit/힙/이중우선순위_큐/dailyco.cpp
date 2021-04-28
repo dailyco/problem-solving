@@ -18,8 +18,8 @@ int getNum(string str)
     int num;
     string str_num = str.substr(2);
 
-    stringstream ssInt(str_num);
-    ssInt >> num;
+    stringstream ss_int(str_num);
+    ss_int >> num;
 
     return num;
 }
