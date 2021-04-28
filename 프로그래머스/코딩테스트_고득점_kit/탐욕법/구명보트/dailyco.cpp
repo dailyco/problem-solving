@@ -14,11 +14,10 @@ using namespace std;
 int solution(vector<int> people, int limit)
 {
     int answer = 0;
-    int j = 0;
 
     sort(people.begin(), people.end());
 
-    for (int i = people.size() - 1; i >= j; i--)
+    for (int i = people.size() - 1, j = 0; i >= j; i--)
     {
         answer++;
         if (i == j)
