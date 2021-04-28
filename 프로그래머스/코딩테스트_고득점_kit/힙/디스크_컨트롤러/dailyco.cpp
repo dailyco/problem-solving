@@ -17,16 +17,16 @@ int solution(vector<vector<int>> jobs)
     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
     int answer = 0;
     int ms = 0;
-    int i = 0;
+    int disk_count = 0;
 
     sort(jobs.begin(), jobs.end());
     while (true)
     {
-        if (!pq.size() && i < jobs.size())
+        if (!pq.size() && disk_count < jobs.size())
         {
-            ms = jobs[i][0];
-            pq.push(make_pair(jobs[i][1], jobs[i][0]));
-            i++;
+            ms = jobs[disk_count][0];
+            pq.push(make_pair(jobs[disk_count][1], jobs[disk_count][0]));
+            disk_count++;
         }
 
         if (pq.size())
@@ -35,16 +35,16 @@ int solution(vector<vector<int>> jobs)
             pq.pop();
             ms += p.first;
             answer += ms - p.second;
-            while (i < jobs.size() && ms >= jobs[i][0])
+            while (disk_count < jobs.size() && ms >= jobs[disk_count][0])
             {
-                pq.push(make_pair(jobs[i][1], jobs[i][0]));
-                i++;
+                pq.push(make_pair(jobs[disk_count][1], jobs[disk_count][0]));
+                disk_count++;
             }
         }
 
-        if (i == jobs.size() && !pq.size())
+        if (disk_count == jobs.size() && !pq.size())
             break;
     }
 
-    return answer / i;
+    return answer / disk_count;
 }
