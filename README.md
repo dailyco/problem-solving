@@ -7,10 +7,10 @@
 ## 📄 알고리즘 문제해결 연습 목록
 ### 프로그래머스
 - [코딩테스트 고득점 Kit](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B3%A0%EB%93%9D%EC%A0%90-Kit)
-- [2019 KAKAO BLIND RECRUITMENT]()
-- [2019 카카오 개발자 겨울 인턴십]()
-- [2020 KAKAO BLIND RECRUITMENT]()
-- [2020 카카오 인턴십]()
+- [2019 KAKAO BLIND RECRUITMENT](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-2019-KAKAO-BLIND-RECRUITMENT)
+- [2019 카카오 개발자 겨울 인턴십](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-2019-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EA%B0%9C%EB%B0%9C%EC%9E%90-%EA%B2%A8%EC%9A%B8-%EC%9D%B8%ED%84%B4%EC%8B%AD)
+- [2020 KAKAO BLIND RECRUITMENT](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-2020-KAKAO-BLIND-RECRUITMENT)
+- [2020 카카오 인턴십](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-2020-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EC%9D%B8%ED%84%B4%EC%8B%AD)
 
 <br/>
 
