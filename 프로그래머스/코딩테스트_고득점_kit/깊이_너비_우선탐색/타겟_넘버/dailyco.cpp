@@ -11,9 +11,9 @@
 
 using namespace std;
 
-int find_answer(vector<int> numbers, int target, int sum)
+int find_answer(vector<int> &numbers, int idx, int target, int sum)
 {
-    if (numbers.size() == 0)
+    if (numbers.size() == idx)
     {
         if (sum == target)
             return 1;
@@ -21,14 +21,11 @@ int find_answer(vector<int> numbers, int target, int sum)
     }
     else
     {
-        vector<int> numbers_cp;
-        numbers_cp.assign(numbers.begin() + 1, numbers.end());
-
-        return find_answer(numbers_cp, target, sum + numbers[0]) + find_answer(numbers_cp, target, sum - numbers[0]);
+        return find_answer(numbers, idx + 1, target, sum + numbers[idx]) + find_answer(numbers, idx + 1, target, sum - numbers[idx]);
     }
 }
 
 int solution(vector<int> numbers, int target)
 {
-    return find_answer(numbers, target, 0);
+    return find_answer(numbers, 0, target, 0);
 }
