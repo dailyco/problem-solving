@@ -10,28 +10,44 @@
 #include <vector>
 
 using namespace std;
-vector<vector<int>> network_board;
 
-void dfs(int i, int j, int n)
+void dfs(vector<vector<int>> &adj_list, vector<bool> &visited, int computer)
 {
-    network_board[i][j] = 0;
-    for (int k = 0; k < n; k++)
-        if (network_board[j][k] == 1)
-            dfs(j, k, n);
+    if (visited[computer])
+        return;
+
+    visited[computer] = true;
+    int s = adj_list[computer].size();
+    for (int i = 0; i < s; i++)
+        dfs(adj_list, visited, adj_list[computer][i]);
 }
 
 int solution(int n, vector<vector<int>> computers)
 {
-    network_board = computers;
+    vector<vector<int>> adj_list(n + 1, vector<int>());
+    vector<bool> visited(n + 1, false);
     int answer = 0;
 
     for (int i = 0; i < n; i++)
+    {
         for (int j = 0; j < n; j++)
-            if (network_board[i][j] == 1)
+        {
+            if (i != j && computers[i][j] == 1)
             {
-                answer++;
-                dfs(i, j, n);
+                adj_list[i + 1].push_back(j + 1);
+                adj_list[j + 1].push_back(i + 1);
             }
+        }
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        if (!visited[i])
+        {
+            answer++;
+            dfs(adj_list, visited, i);
+        }
+    }
 
     return answer;
 }
