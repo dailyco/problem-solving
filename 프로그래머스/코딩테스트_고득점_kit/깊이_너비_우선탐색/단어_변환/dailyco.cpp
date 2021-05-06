@@ -8,51 +8,55 @@
 
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
-bool canChange(string prev, string next)
+int answer = 50;
+
+bool IsChangeable(string from, string to)
 {
     bool diff = false;
 
-    for (int i = 0; i < prev.length(); i++)
+    for (int i = 0; i < from.length(); i++)
     {
-        if (prev[i] != next[i])
+        if (from[i] != to[i])
         {
             if (diff)
                 return false;
-            else
-                diff = true;
+            diff = true;
         }
     }
 
     return true;
 }
 
-int dfs(string begin, string target, vector<string> words)
+int ChangeNumber(string from, string to, vector<string> &words, vector<bool> &used, int count)
 {
-    if (canChange(begin, target))
-        return 1;
+    if (IsChangeable(from, to))
+        return count + 1;
 
-    int cAnswer, answer = 50;
     for (int i = 0; i < words.size(); i++)
     {
-        if (canChange(begin, words[i]))
+        if (!used[i] && IsChangeable(from, words[i]))
         {
-            vector<string> words_cp = words;
-            words_cp.erase(words_cp.begin() + i);
-            cAnswer = dfs(words[i], target, words_cp);
-            if (cAnswer != 0 && answer > cAnswer + 1)
-                answer = cAnswer + 1;
+            used[i] = true;
+            int c_answer = ChangeNumber(words[i], to, words, used, count + 1);
+            if (c_answer != 0 && answer > c_answer)
+                answer = c_answer;
+            used[i] = false;
         }
     }
 
-    if (answer == 50)
-        return 0;
     return answer;
 }
 
 int solution(string begin, string target, vector<string> words)
 {
-    return dfs(begin, target, words);
+    vector<bool> used(words.size(), false);
+
+    if (find(words.begin(), words.end(), target) == words.end())
+        return 0;
+
+    return ChangeNumber(begin, target, words, used, 0);
 }
