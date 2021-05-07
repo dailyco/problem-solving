@@ -12,9 +12,8 @@ function solution(participant, completion) {
   participant.sort();
   completion.sort();
 
-  for (var i = 0; i < s; i++) {
+  for (var i = 0; i < s; i++)
     if (participant[i] != completion[i]) return participant[i];
-  }
 
   return participant[s];
 }
