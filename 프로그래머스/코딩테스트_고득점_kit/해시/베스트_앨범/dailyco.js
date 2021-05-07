@@ -14,21 +14,15 @@ function solution(genres, plays) {
 
   var genreCount = {};
   return plays
-    .map((cur, i) => {
-      var obj = {};
-      obj.id = i;
-      obj.play = cur;
-      obj.genrePlay = genrePlay[genres[i]];
-      return obj;
-    })
+    .map((cur, i) => ({ id: i, play: cur, genre: genrePlay[genres[i]] }))
     .sort(function (a, b) {
-      if (a.genrePlay !== b.genrePlay) return b.genrePlay - a.genrePlay;
+      if (a.genre !== b.genre) return b.genre - a.genre;
       if (a.play !== b.play) return b.play - a.play;
       return a.id - b.id;
     })
     .filter((cur) => {
-      if (genreCount[cur.genrePlay] >= 2) return false;
-      genreCount[cur.genrePlay] = (genreCount[cur.genrePlay] || 0) + 1;
+      if (genreCount[cur.genre] >= 2) return false;
+      genreCount[cur.genre] = (genreCount[cur.genre] || 0) + 1;
       return true;
     })
     .map((cur) => cur.id);
