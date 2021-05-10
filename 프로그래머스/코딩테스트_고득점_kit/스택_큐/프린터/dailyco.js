@@ -14,17 +14,19 @@ function solution(priorities, location) {
     var isPrint = true;
     for (let i = 0; i < priorities.length; i++) {
       if (J < priorities[i]) {
-        if (location === 0) location = priorities.length;
-        else location--;
-        priorities.push(J);
         isPrint = false;
         break;
       }
     }
+
     if (isPrint) {
       answer++;
       if (location === 0) return answer;
       else location--;
+    } else {
+      if (location === 0) location = priorities.length;
+      else location--;
+      priorities.push(J);
     }
   }
 
