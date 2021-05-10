@@ -12,38 +12,38 @@
 
 using namespace std;
 
-bool dfs(string from, vector<vector<string>> &tickets, vector<bool> &visit, vector<string> &temp, vector<string> &answer, int cnt)
+bool dfs(string from, vector<vector<string>> &tickets, vector<bool> &visited, vector<string> &cAnswer, vector<string> &answer, int cnt)
 {
-    temp.push_back(from);
+    cAnswer.push_back(from);
     if (cnt == tickets.size())
     {
-        answer = temp;
+        answer = cAnswer;
         return true;
     }
 
     for (int i = 0; i < tickets.size(); i++)
     {
-        if (tickets[i][0] == from && visit[i] == false)
+        if (tickets[i][0] == from && visited[i] == false)
         {
-            visit[i] = true;
-            bool success = dfs(tickets[i][1], tickets, visit, temp, answer, cnt + 1);
+            visited[i] = true;
+            bool success = dfs(tickets[i][1], tickets, visited, cAnswer, answer, cnt + 1);
             if (success)
                 return true;
-            visit[i] = false;
+            visited[i] = false;
         }
     }
 
-    temp.pop_back();
+    cAnswer.pop_back();
     return false;
 }
 
 vector<string> solution(vector<vector<string>> tickets)
 {
     vector<string> answer, temp;
-    vector<bool> visit(tickets.size(), false);
+    vector<bool> visited(tickets.size(), false);
 
     sort(tickets.begin(), tickets.end());
-    dfs("ICN", tickets, visit, temp, answer, 0);
+    dfs("ICN", tickets, visited, temp, answer, 0);
 
     return answer;
 }
