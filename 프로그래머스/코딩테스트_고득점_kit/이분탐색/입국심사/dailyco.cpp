@@ -10,7 +10,7 @@
 
 using namespace std;
 
-bool can_check(int n, vector<int> times, long long total_time)
+bool IsChecked(int n, vector<int> &times, long long total_time)
 {
     long long total = 0;
 
@@ -22,21 +22,22 @@ bool can_check(int n, vector<int> times, long long total_time)
 
 long long solution(int n, vector<int> times)
 {
-    long long left = 1, right = 1000000000000000000;
-    long long mid = right / 2;
+    long long min_m = 1, max_m = 1e9 * n, mid;
+    long long answer = 1e18;
 
-    while (left < right)
+    while (min_m <= max_m)
     {
-        if (can_check(n, times, mid))
+        mid = (min_m + max_m) / 2;
+
+        if (IsChecked(n, times, mid))
         {
-            if (!can_check(n, times, mid - 1))
-                return mid;
-            right = mid;
+            max_m = mid - 1;
+            if (answer > mid)
+                answer = mid;
         }
         else
-            left = mid;
-        mid = (right + left) / 2;
+            min_m = mid + 1;
     }
 
-    return mid;
+    return answer;
 }
