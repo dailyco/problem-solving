@@ -7,39 +7,41 @@
 */
 
 #include <vector>
-#include <map>
-#include <set>
 
 using namespace std;
 
 int solution(int n, vector<vector<int>> results)
 {
-    map<int, set<int>> win;
-    map<int, set<int>> defeat;
-    int answer = 0;
+    vector<vector<bool>> win(n + 1, vector<bool>(n + 1, false));
 
-    for (auto result : results)
-    {
-        win[result[0]].insert(result[1]);
-        defeat[result[1]].insert(result[0]);
-    }
+    for (vector<int> r : results)
+        win[r[0]][r[1]] = true;
 
-    int count = n;
-    while (--count)
+    for (int i = 1; i <= n; i++)
     {
-        for (int i = 1; i <= n; i++)
+        for (int j = 1; j <= n; j++)
         {
-            for (auto loser : win[i])
-                win[i].insert(win[loser].begin(), win[loser].end());
-
-            for (auto winner : defeat[i])
-                defeat[i].insert(defeat[winner].begin(), defeat[winner].end());
+            for (int k = 1; k <= n; k++)
+            {
+                if (win[j][i] && win[i][k])
+                    win[j][k] = true;
+            }
         }
     }
 
+    int answer = 0;
     for (int i = 1; i <= n; i++)
-        if (win[i].size() + defeat[i].size() == n - 1)
+    {
+        int cnt = 0;
+        for (int j = 1; j <= n; j++)
+        {
+            if (win[i][j] || win[j][i])
+                cnt++;
+        }
+
+        if (cnt == n - 1)
             answer++;
+    }
 
     return answer;
 }
