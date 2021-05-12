@@ -8,33 +8,32 @@
 
 #include <vector>
 #include <queue>
-#include <map>
-#include <set>
 
 using namespace std;
 
 int solution(int n, vector<vector<int>> edge)
 {
     vector<bool> visited(n + 1, false);
-    map<int, set<int>> graph;
-    queue<int> q;
+    vector<vector<int>> adj_lst(n + 1, vector<int>());
+    // map<int, set<int>> graph;
     int answer;
 
     for (auto e : edge)
     {
-        graph[e[0]].insert(e[1]);
-        graph[e[1]].insert(e[0]);
+        adj_lst[e[0]].push_back(e[1]);
+        adj_lst[e[1]].push_back(e[0]);
     }
 
+        int cur_size = 1;
+    queue<int> q;
     q.push(1);
-    int cur_size = 1;
     while (q.size())
     {
         int i = q.front();
         q.pop();
 
         visited[i] = true;
-        for (int node : graph[i])
+        for (int node : adj_lst[i])
         {
             if (visited[node] == false)
             {
