@@ -11,7 +11,7 @@
 
 using namespace std;
 
-bool is_ceiling(vector<int> budgets, int M, int ceiling)
+bool IsCeiling(vector<int> &budgets, int M, int ceiling)
 {
     int total = 0;
     for (int budget : budgets)
@@ -22,29 +22,24 @@ bool is_ceiling(vector<int> budgets, int M, int ceiling)
             total += budget;
     }
 
-    return total > M ? false : true;
+    return total <= M;
 }
 
 int solution(vector<int> budgets, int M)
 {
-    int left = 1, right = 100000;
-    int mid = right / 2;
-    int max = *max_element(budgets.begin(), budgets.end());
+    int left = 1, right = 1e5, mid, answer;
 
-    while (left < right)
+    while (left <= right)
     {
-        if (is_ceiling(budgets, M, mid))
+        mid = (left + right) / 2;
+        if (IsCeiling(budgets, M, mid))
         {
-            if (mid >= max)
-                return max;
-            if (!is_ceiling(budgets, M, mid + 1))
-                return mid;
-            left = mid;
+            left = mid + 1;
+            answer = mid;
         }
         else
-            right = mid;
-        mid = (left + right) / 2;
-    }
+            right = mid - 1;
 
-    return 0;
+        return answer;
+    }
 }
