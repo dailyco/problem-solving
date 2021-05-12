@@ -1,6 +1,6 @@
 /*
 작성자 : dailyco
-문제 난이도: 중
+문제 난이도: 상
 해결시간: 01:30:00
 문제 링크 : https://programmers.co.kr/learn/courses/30/lessons/43236
 */
