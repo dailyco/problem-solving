@@ -12,7 +12,7 @@
 
 using namespace std;
 
-void strtok_s(string str, string delimeter, vector<long long> &numbers, vector<char> &operands)
+void strtok_s(string str, string delimeter, vector<long long> &numbers, vector<char> &ops)
 {
     long long number;
     string num = "";
@@ -23,7 +23,7 @@ void strtok_s(string str, string delimeter, vector<long long> &numbers, vector<c
         {
             if (c == d)
             {
-                operands.push_back(d);
+                ops.push_back(d);
                 istringstream(num) >> number;
                 numbers.push_back(number);
                 num = "";
@@ -38,30 +38,30 @@ void strtok_s(string str, string delimeter, vector<long long> &numbers, vector<c
     numbers.push_back(number);
 }
 
-void permutation(vector<vector<char>> &operand_priority, vector<char> &operands, int start, int end)
+void Permutation(vector<vector<char>> &op_priorities, vector<char> &ops, int start, int end)
 {
     if (start == end)
-        operand_priority.push_back(operands);
+        op_priorities.push_back(ops);
     else
     {
         for (int i = start; i <= end; i++)
         {
-            swap(operands[start], operands[i]);
-            permutation(operand_priority, operands, start + 1, end);
-            swap(operands[start], operands[i]);
+            swap(ops[start], ops[i]);
+            Permutation(op_priorities, ops, start + 1, end);
+            swap(ops[start], ops[i]);
         }
     }
 }
 
 long long solution(string expression)
 {
-    vector<vector<char>> operand_priority;
-    vector<char> operands;
-    vector<long long> numbers;
+    vector<vector<char>> op_priorities;
+    vector<char> ops;
+    vector<long long> nums;
     long long answer = 0;
 
-    strtok_s(expression, "*+-", numbers, operands);
-    vector<char> operands_kind(operands);
+    strtok_s(expression, "*+-", nums, ops);
+    vector<char> operands_kind(ops);
 
     for (int i = 0; i < operands_kind.size() - 1; i++)
     {
@@ -75,45 +75,40 @@ long long solution(string expression)
         }
     }
 
-    permutation(operand_priority, operands_kind, 0, 2);
+    Permutation(op_priorities, operands_kind, 0, 2);
 
-    for (auto priority : operand_priority)
+    for (auto op_priority : op_priorities)
     {
-        vector<long long> cpNumbers(numbers);
-        vector<char> cpOperands(operands);
-        for (char c : priority)
+        vector<long long> cp_nums(nums);
+        vector<char> cp_ops(ops);
+        for (char p : op_priority)
         {
-            for (int i = 0; i < cpOperands.size(); i++)
+            for (int i = 0; i < cp_ops.size(); i++)
             {
-                if (cpOperands[i] == c)
+                if (cp_ops[i] == p)
                 {
-                    switch (c)
+                    switch (p)
                     {
                     case '*':
-                        cpNumbers[i] *= cpNumbers[i + 1];
-                        cpOperands.erase(cpOperands.begin() + i);
-                        cpNumbers.erase(cpNumbers.begin() + i + 1);
-                        i--;
+                        cp_nums[i] *= cp_nums[i + 1];
                         break;
                     case '+':
-                        cpNumbers[i] += cpNumbers[i + 1];
-                        cpOperands.erase(cpOperands.begin() + i);
-                        cpNumbers.erase(cpNumbers.begin() + i + 1);
-                        i--;
+                        cp_nums[i] += cp_nums[i + 1];
                         break;
                     case '-':
-                        cpNumbers[i] -= cpNumbers[i + 1];
-                        cpOperands.erase(cpOperands.begin() + i);
-                        cpNumbers.erase(cpNumbers.begin() + i + 1);
-                        i--;
+                        cp_nums[i] -= cp_nums[i + 1];
                         break;
-                    default:;
+                    default:
+                        break;
                     }
+                    cp_ops.erase(cp_ops.begin() + i);
+                    cp_nums.erase(cp_nums.begin() + i + 1);
+                    i--;
                 }
             }
         }
-        if (abs(cpNumbers[0]) > answer)
-            answer = abs(cpNumbers[0]);
+        if (abs(cp_nums[0]) > answer)
+            answer = abs(cp_nums[0]);
     }
 
     return answer;
