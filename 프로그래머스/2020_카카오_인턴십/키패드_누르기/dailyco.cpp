@@ -10,11 +10,11 @@
 #include <vector>
 
 using namespace std;
+const int R = 1, L = 0;
 
 string solution(vector<int> numbers, string hand)
 {
-    int cur_L = 10, cur_R = 12;
-    static int R = 1, L = 0;
+    int l_hand = 10, r_hand = 12;
     string answer = "";
 
     for (int num : numbers)
@@ -25,20 +25,20 @@ string solution(vector<int> numbers, string hand)
         case 4:
         case 7:
             answer += "L";
-            cur_L = num;
+            l_hand = num;
             break;
         case 3:
         case 6:
         case 9:
             answer += "R";
-            cur_R = num;
+            r_hand = num;
             break;
         default:
             if (num == 0)
                 num += 11;
 
-            int left_dist = abs(num - cur_L);
-            int right_dist = abs(num - cur_R);
+            int left_dist = abs(num - l_hand);
+            int right_dist = abs(num - r_hand);
             left_dist = (left_dist / 3) + (left_dist % 3);
             right_dist = (right_dist / 3) + (right_dist % 3);
 
@@ -50,14 +50,14 @@ string solution(vector<int> numbers, string hand)
             else
                 cur_hand = R;
 
-            if (cur_hand)
+            if (cur_hand == R)
             {
-                cur_R = num;
+                r_hand = num;
                 answer += "R";
             }
             else
             {
-                cur_L = num;
+                l_hand = num;
                 answer += "L";
             }
         }
