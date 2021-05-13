@@ -13,15 +13,15 @@
 
 using namespace std;
 
-vector<string> solution(vector<string> record)
+vector<string> solution(vector<string> records)
 {
     map<string, string> uid_name;
     vector<pair<string, string>> result_pair;
     vector<string> answer;
 
-    for (auto r : record)
+    for (string record : records)
     {
-        istringstream iss(r);
+        istringstream iss(record);
         string s1, s2, s3;
 
         getline(iss, s1, ' ');
@@ -39,8 +39,8 @@ vector<string> solution(vector<string> record)
             uid_name[s2] = s3;
     }
 
-    for (auto result : result_pair)
-        answer.push_back(uid_name[result.first] + result.second);
+    for (auto p : result_pair)
+        answer.push_back(uid_name[p.first] + p.second);
 
     return answer;
 }
