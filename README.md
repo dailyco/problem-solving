@@ -12,6 +12,8 @@
 - [2020 KAKAO BLIND RECRUITMENT](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-2020-KAKAO-BLIND-RECRUITMENT)
 - [2020 카카오 인턴십](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-2020-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EC%9D%B8%ED%84%B4%EC%8B%AD)
 
+### 리트코드
+- [Weekly Contest](https://github.com/dailyco/problem-solving/wiki/%5B%EB%A6%AC%ED%8A%B8%EC%BD%94%EB%93%9C%5D-Weekly-Contest)
 <br/>
 
 ## 👩🏻‍💻 문제해결 단계
