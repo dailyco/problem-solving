@@ -1,6 +1,6 @@
 /*
 작성자 : dailyco
-문제 난이도: 중
+문제 난이도: 상
 해결시간: 00:50:00
 문제 링크 : https://leetcode.com/contest/weekly-contest-196/problems/minimum-possible-integer-after-at-most-k-adjacent-swaps-on-digits/
 블로그 링크 : https://dailyco.github.io/posts/smallest_number/
