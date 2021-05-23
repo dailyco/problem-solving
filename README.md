@@ -4,6 +4,11 @@
 
 <br/>
 
+## ✏️ 알고리즘 문제 해결 공부
+- [프로그래밍 대회에서 배우는 알고리즘 문제 해결 전략 1]()
+
+<br/>
+
 ## 📄 알고리즘 문제해결 연습 목록
 ### 프로그래머스
 - [코딩테스트 고득점 Kit](https://github.com/dailyco/problem-solving/wiki/%5B%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4%5D-%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B3%A0%EB%93%9D%EC%A0%90-Kit)
