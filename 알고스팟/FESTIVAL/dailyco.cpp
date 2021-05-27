@@ -1,3 +1,10 @@
+/*
+작성자 : dailyco
+문제 난이도: 하
+해결시간: 01:10:00
+문제 링크 : https://algospot.com/judge/problem/read/FESTIVAL
+*/
+
 #include <iostream>
 
 using namespace std;
